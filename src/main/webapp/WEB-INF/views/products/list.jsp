@@ -8,6 +8,9 @@
     <title>Cadastro de livros</title>
 </head>
 <body>
+
+${sucesso}
+
 <table>
     <tr>
         <th>Título</th>
