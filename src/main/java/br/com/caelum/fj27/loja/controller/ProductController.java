@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.transaction.Transactional;
+
 /**
  * Created by nando on 02/07/17.
  */
@@ -22,6 +24,7 @@ public class ProductController {
     }
 
     @PostMapping("/products")
+    @Transactional
     public String save(Product product){
 
         productDao.save(product);

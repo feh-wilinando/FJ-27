@@ -2,15 +2,20 @@ package br.com.caelum.fj27.loja.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
  * Created by nando on 02/07/17.
  */
+@EnableTransactionManagement
 public class JpaConfiguration {
 
     @Bean
@@ -49,6 +54,16 @@ public class JpaConfiguration {
         properties.setProperty("hibernate.show_sql", "true");
 
         return properties;
+    }
+
+
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory){
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+
+        transactionManager.setEntityManagerFactory(entityManagerFactory);
+
+        return transactionManager;
     }
 
 }
