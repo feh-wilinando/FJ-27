@@ -29,6 +29,15 @@ public class ProductController {
         return view;
     }
 
+    @GetMapping("/products")
+    public ModelAndView list(){
+        ModelAndView view = new ModelAndView("products/list");
+
+        view.addObject("products", productDao.list());
+
+        return view;
+    }
+
     @PostMapping("/products")
     @Transactional
     public String save(Product product){

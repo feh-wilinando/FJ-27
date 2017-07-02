@@ -13,18 +13,18 @@ import java.math.BigDecimal;
 @Embeddable
 public class Price {
 
-    @Column(precision = 2)
-    private BigDecimal price;
+    @Column(scale = 2)
+    private BigDecimal value;
 
     @Enumerated(EnumType.STRING)
     private BookType bookType;
 
-    public BigDecimal getPrice() {
-        return price;
+    public BigDecimal getValue() {
+        return value;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setValue(BigDecimal value) {
+        this.value = value;
     }
 
     public BookType getBookType() {
