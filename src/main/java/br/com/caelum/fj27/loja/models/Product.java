@@ -1,9 +1,8 @@
 package br.com.caelum.fj27.loja.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by nando on 02/07/17.
@@ -17,6 +16,9 @@ public class Product {
     private String title;
     private String description;
     private Integer numberOfPages;
+
+    @ElementCollection
+    private List<Price> prices = new ArrayList<>();
 
 
     public Integer getId() {
@@ -49,6 +51,14 @@ public class Product {
 
     public void setNumberOfPages(Integer numberOfPages) {
         this.numberOfPages = numberOfPages;
+    }
+
+    public List<Price> getPrices() {
+        return prices;
+    }
+
+    public void setPrices(List<Price> prices) {
+        this.prices = prices;
     }
 
     @Override
