@@ -1,12 +1,14 @@
 package br.com.caelum.fj27.loja.models;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -32,6 +34,11 @@ public class Product {
     @ElementCollection
     @Valid
     private List<Price> prices = new ArrayList<>();
+
+    @DateTimeFormat
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    private Calendar releaseDate;
 
 
     public Integer getId() {
@@ -72,6 +79,14 @@ public class Product {
 
     public void setPrices(List<Price> prices) {
         this.prices = prices;
+    }
+
+    public Calendar getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Calendar releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     @Override
