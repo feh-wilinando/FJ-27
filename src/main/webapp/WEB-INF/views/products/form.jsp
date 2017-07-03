@@ -39,6 +39,7 @@
                 <label for="price_${bookType}">${bookType}</label>
                 <form:input path="prices[${status.index}].value"
                        id="price_${bookType}"/>
+                <form:errors path="prices[${status.index}].value"/>
                 <form:hidden path="prices[${status.index}].bookType" value="${bookType}"/>
             </div>
         </c:forEach>

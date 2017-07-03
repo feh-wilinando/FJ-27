@@ -1,6 +1,11 @@
 package br.com.caelum.fj27.loja.models;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +18,19 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotBlank
     private String title;
+
+    @NotBlank
     private String description;
+
+    @Min(30)
+    @NotNull
     private Integer numberOfPages;
 
     @ElementCollection
+    @Valid
     private List<Price> prices = new ArrayList<>();
 
 
