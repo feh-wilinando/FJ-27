@@ -33,7 +33,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/form")
-    public ModelAndView form(){
+    public ModelAndView form(Product product){
         ModelAndView view = new ModelAndView("products/form");
 
         view.addObject("types", BookType.values());
@@ -56,7 +56,7 @@ public class ProductController {
 
         ModelAndView view = new ModelAndView("redirect:/products");
         System.out.println("aqui");
-        if (result.hasErrors()) return form();
+        if (result.hasErrors()) return form(product);
 
         productDao.save(product);
 
