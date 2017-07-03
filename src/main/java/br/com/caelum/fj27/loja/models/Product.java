@@ -40,6 +40,8 @@ public class Product {
     @Temporal(TemporalType.DATE)
     private Calendar releaseDate;
 
+    private String summaryPath;
+
 
     public Integer getId() {
         return id;
@@ -87,6 +89,14 @@ public class Product {
 
     public void setReleaseDate(Calendar releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public String getSummaryPath() {
+        return summaryPath;
+    }
+
+    public void setSummaryPath(String summaryPath) {
+        this.summaryPath = summaryPath;
     }
 
     @Override

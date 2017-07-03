@@ -1,5 +1,6 @@
 package br.com.caelum.fj27.loja.controller;
 
+import br.com.caelum.fj27.loja.infra.FileSaver;
 import br.com.caelum.fj27.loja.models.BookType;
 import br.com.caelum.fj27.loja.models.Product;
 import br.com.caelum.fj27.loja.repositories.ProductDao;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,6 +24,9 @@ public class ProductController {
 
     @Autowired
     private ProductDao productDao;
+
+    @Autowired
+    private FileSaver fileSaver;
 
     @GetMapping("/products/form")
     public ModelAndView form(Product product){
@@ -43,11 +48,14 @@ public class ProductController {
 
     @PostMapping("/products")
     @Transactional
-    public ModelAndView save(@Valid Product product, BindingResult result, RedirectAttributes redirectAttributes){
+    public ModelAndView save(MultipartFile summary, @Valid Product product, BindingResult result, RedirectAttributes redirectAttributes){
 
         ModelAndView view = new ModelAndView("redirect:/products");
 
         if (result.hasErrors()) return form(product);
+
+        String summaryPath = fileSaver.write("uploaded-summaries", summary);
+        product.setSummaryPath(summaryPath);
 
         productDao.save(product);
 
