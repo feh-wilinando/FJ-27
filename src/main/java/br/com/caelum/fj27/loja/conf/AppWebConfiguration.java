@@ -1,9 +1,11 @@
 package br.com.caelum.fj27.loja.conf;
 
+import com.google.common.cache.CacheBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
+import org.springframework.cache.guava.GuavaCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by nando on 02/07/17.
@@ -76,6 +79,16 @@ public class AppWebConfiguration {
 
     @Bean
     public CacheManager cacheManager(){
-        return new ConcurrentMapCacheManager();
+
+        CacheBuilder<Object, Object> builder = CacheBuilder
+                                                    .newBuilder()
+                                                        .maximumSize(100)
+                                                            .expireAfterAccess(5, TimeUnit.MINUTES);
+
+
+        GuavaCacheManager cacheManager = new GuavaCacheManager();
+        cacheManager.setCacheBuilder(builder);
+
+        return cacheManager;
     }
 }
