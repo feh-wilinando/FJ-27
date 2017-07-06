@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
+import java.util.concurrent.Callable;
 
 /**
  * Created by nando on 06/07/17.
@@ -47,22 +48,27 @@ public class ShoppingCartController {
 
 
     @PostMapping("/checkout")
-    public String checkout(){
-        BigDecimal total = shoppingCart.getTotal();
+    public Callable<String> checkout(){
 
-        String uri = "http://book-payment.herokuapp.com/payment";
+        return () -> {
 
-        try {
+            BigDecimal total = shoppingCart.getTotal();
 
-            String response = restTemplate.postForObject(uri, new PaymentData(total), String.class);
-            System.out.println(response);
+            String uri = "http://book-payment.herokuapp.com/payment";
 
-            return "redirect:/products";
-        }catch (HttpClientErrorException e){
-            System.out.println("Ocorreu um erro ao criar o pagamento: " + e.getMessage());
+            try {
 
-            return "redirect:/shopping";
-        }
+                String response = restTemplate.postForObject(uri, new PaymentData(total), String.class);
+                System.out.println(response);
+
+                return "redirect:/products";
+            }catch (HttpClientErrorException e){
+                System.out.println("Ocorreu um erro ao criar o pagamento: " + e.getMessage());
+
+                return "redirect:/shopping";
+            }
+
+        };
     }
 
     @GetMapping
