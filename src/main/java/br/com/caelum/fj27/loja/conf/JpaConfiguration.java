@@ -1,6 +1,7 @@
 package br.com.caelum.fj27.loja.conf;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -16,6 +17,7 @@ import java.util.Properties;
  * Created by nando on 02/07/17.
  */
 @EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "br.com.caelum.fj27.loja")
 public class JpaConfiguration {
 
     @Bean
@@ -36,7 +38,7 @@ public class JpaConfiguration {
 
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource(dataSource);
-        entityManagerFactory.setPackagesToScan("br.com.caelum.fj27.loja.models");
+        entityManagerFactory.setPackagesToScan("br.com.caelum.fj27.loja");
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
@@ -52,6 +54,8 @@ public class JpaConfiguration {
 
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("hibernate.connection.useUnicode", "true");
+        properties.setProperty("hibernate.connection.characterEncoding", "UTF-8");
 
         return properties;
     }

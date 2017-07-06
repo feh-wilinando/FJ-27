@@ -1,6 +1,8 @@
 package br.com.caelum.fj27.loja.repositories;
 
 import br.com.caelum.fj27.loja.models.Product;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -11,16 +13,8 @@ import java.util.List;
  * Created by nando on 02/07/17.
  */
 @Repository
-public class ProductDao {
+public interface ProductDao extends CrudRepository<Product, Integer>{
 
-    @PersistenceContext
-    private EntityManager manager;
-
-    public void save(Product product) {
-        manager.persist(product);
-    }
-
-    public List<Product> list(){
-        return manager.createQuery("select distinct(p) from Product p join fetch p.prices", Product.class).getResultList();
-    }
+    @Query("select distinct(p) from Product p join fetch p.prices")
+    List<Product> list();
 }
