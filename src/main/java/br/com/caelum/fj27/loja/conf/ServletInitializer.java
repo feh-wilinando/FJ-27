@@ -1,7 +1,9 @@
 package br.com.caelum.fj27.loja.conf;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration;
 
@@ -31,5 +33,11 @@ public class ServletInitializer extends AbstractAnnotationConfigDispatcherServle
         MultipartConfigElement multipartConfigElement = new MultipartConfigElement("");
 
         registration.setMultipartConfig(multipartConfigElement);
+    }
+
+
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{new CharacterEncodingFilter("UTF-8")};
     }
 }
