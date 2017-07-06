@@ -5,6 +5,7 @@ import br.com.caelum.fj27.loja.models.BookType;
 import br.com.caelum.fj27.loja.models.Product;
 import br.com.caelum.fj27.loja.repositories.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -53,6 +54,7 @@ public class ProductController {
 
     @PostMapping
     @Transactional
+    @CacheEvict(value = "lastProducts", allEntries = true)
     public ModelAndView save(MultipartFile summary, @Valid Product product, BindingResult result, RedirectAttributes redirectAttributes){
 
         ModelAndView view = new ModelAndView("redirect:/products");
