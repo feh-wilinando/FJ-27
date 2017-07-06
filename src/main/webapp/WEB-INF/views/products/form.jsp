@@ -6,7 +6,6 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Cadastro de livros</title>
 </head>
 <body>
@@ -35,7 +34,7 @@
 
     <div>
         <label for="releaseDate">Data de Lançamento</label>
-        <form:input path="releaseDate"/>
+        <form:input type="date" path="releaseDate"/>
         <form:errors path="releaseDate"/>
     </div>
 
