@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -106,5 +107,13 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", numberOfPages=" + numberOfPages +
                 '}';
+    }
+
+    public BigDecimal priceFor(BookType type) {
+        return prices.stream()
+                .filter(price -> price.getBookType().equals(type))
+                .map(Price::getValue)
+                .findFirst()
+                .orElse(BigDecimal.ZERO);
     }
 }
