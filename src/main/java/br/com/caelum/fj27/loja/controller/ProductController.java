@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -20,6 +22,7 @@ import javax.validation.Valid;
  * Created by nando on 02/07/17.
  */
 @Controller
+@RequestMapping("products")
 public class ProductController {
 
     @Autowired
@@ -28,7 +31,7 @@ public class ProductController {
     @Autowired
     private FileSaver fileSaver;
 
-    @GetMapping("/products/form")
+    @GetMapping("form")
     public ModelAndView form(Product product){
         ModelAndView view = new ModelAndView("products/form");
 
@@ -37,7 +40,7 @@ public class ProductController {
         return view;
     }
 
-    @GetMapping("/products")
+    @GetMapping
     public ModelAndView list(){
         ModelAndView view = new ModelAndView("products/list");
 
@@ -46,7 +49,7 @@ public class ProductController {
         return view;
     }
 
-    @PostMapping("/products")
+    @PostMapping
     @Transactional
     public ModelAndView save(MultipartFile summary, @Valid Product product, BindingResult result, RedirectAttributes redirectAttributes){
 
@@ -60,6 +63,16 @@ public class ProductController {
         productDao.save(product);
 
         redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso!");
+
+        return view;
+    }
+
+
+    @GetMapping("{id}")
+    public ModelAndView show(@PathVariable("id") Integer id){
+        ModelAndView view = new ModelAndView("products/show");
+
+        view.addObject("product", productDao.findOne(id));
 
         return view;
     }

@@ -31,7 +31,7 @@ public class Product {
     @NotNull
     private Integer numberOfPages;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Valid
     private List<Price> prices = new ArrayList<>();
 
