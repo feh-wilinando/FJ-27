@@ -5,6 +5,7 @@ import br.com.caelum.fj27.loja.models.BookType;
 import br.com.caelum.fj27.loja.models.Product;
 import br.com.caelum.fj27.loja.repositories.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ import javax.validation.Valid;
  * Created by nando on 02/07/17.
  */
 @Controller
-@RequestMapping("products")
+@RequestMapping("/products")
 public class ProductController {
 
     @Autowired
@@ -41,6 +42,7 @@ public class ProductController {
     }
 
     @GetMapping
+    @Cacheable("lastProducts")
     public ModelAndView list(){
         ModelAndView view = new ModelAndView("products/list");
 
