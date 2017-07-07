@@ -1,7 +1,6 @@
 package br.com.caelum.fj27.loja.repositories;
 
 import br.com.caelum.fj27.loja.models.Product;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +14,4 @@ import java.util.List;
 @Repository
 public interface ProductDao extends CrudRepository<Product, Integer>{
 
-    @Query("select distinct(p) from Product p join fetch p.prices")
-    List<Product> list();
 }

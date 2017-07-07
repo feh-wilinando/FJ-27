@@ -47,7 +47,7 @@ public class ProductController {
     public ModelAndView list(){
         ModelAndView view = new ModelAndView("products/list");
 
-        view.addObject("products", productDao.list());
+        view.addObject("products", productDao.findAll());
 
         return view;
     }
