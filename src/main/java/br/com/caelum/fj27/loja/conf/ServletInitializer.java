@@ -1,5 +1,6 @@
 package br.com.caelum.fj27.loja.conf;
 
+import com.sun.org.apache.xerces.internal.parsers.SecurityConfiguration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -14,7 +15,7 @@ public class ServletInitializer extends AbstractAnnotationConfigDispatcherServle
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[0];
+        return new Class[]{SecurityConfiguration.class};
     }
 
     @Override
