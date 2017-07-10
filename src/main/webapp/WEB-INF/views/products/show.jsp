@@ -31,7 +31,7 @@
 							<a href="${shoppingCartUrl}" rel="nofollow">Seu carrinho (${shoppingCart.quantity})</a>
 						</li>
 						<li>
-							<a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre nós</a>
+							<a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre nï¿½s</a>
 						</li>
 						<li>
 							<a href="/pages/perguntas-frequentes" rel="nofollow">Perguntas Frequentes</a>
@@ -88,7 +88,7 @@
 		</header>
 		
 		<section class="buy-options clearfix">
-			<form action="${shoppingCartUrl}" method="post" class="container">
+			<form:form  action="${shoppingCartUrl}" method="post" class="container">
 				<input type="hidden" value="${product.id}" name="productId"/>
 				<ul id="variants" class="clearfix">
 					<c:forEach items="${product.prices}" var="price">
@@ -105,7 +105,7 @@
 				</ul>
 
 				<input type="submit" class="submit-image icon-basket-alt" alt="Compre agora" title="Compre agora '${product.title}'!" value="comprar"/>
-			</form>
+			</form:form>
 		</section>
 
 		<div class="container">
@@ -119,7 +119,7 @@
 			<section class="data product-detail">
 				<h2 class="section-title">Dados do livro:</h2>
 				<p>
-					Número de paginas: <span itemprop="numberOfPages">${product.numberOfPages}</span>
+					Nï¿½mero de paginas: <span itemprop="numberOfPages">${product.numberOfPages}</span>
 				</p>
 
 				<p></p>
@@ -136,7 +136,7 @@
 
 			<div id="collections-footer">
 				<!-- cdc-footer -->
-				<p class="footer-title">Coleções de Programação</p>
+				<p class="footer-title">Coleï¿½ï¿½es de Programaï¿½ï¿½o</p>
 				<ul class="footer-text-links">
 					<li>
 						<a href="/collections/livros-de-java">Java</a>
@@ -169,19 +169,19 @@
 			
 			<div id="social-footer">
 				<!-- books-footer -->
-				<p class="footer-title">Links da Casa do Código</p>
+				<p class="footer-title">Links da Casa do Cï¿½digo</p>
 				<ul class="footer-text-links">
 					<li>
 						<a href="http://livros.casadocodigo.com.br" rel="nofollow">Meus E-books</a>
 					</li>
 					<li>
-						<a href="/pages/sobre-a-casa-do-codigo">Sobre a Casa do Código</a>
+						<a href="/pages/sobre-a-casa-do-codigo">Sobre a Casa do Cï¿½digo</a>
 					</li>
 					<li>
 						<a href="/pages/perguntas-frequentes">Perguntas Frequentes</a>
 					</li>
 					<li>
-						<a href="https://www.caelum.com.br">Caelum - Ensino e Inovação</a>
+						<a href="https://www.caelum.com.br">Caelum - Ensino e Inovaï¿½ï¿½o</a>
 					</li>
 					<li>
 						<a href="http://www.codecrushing.com/" rel="nofollow">Code Crushing</a>
@@ -200,7 +200,7 @@
 			
 			<div id="newsletter-footer">
 				<!-- social-footer -->
-				<p class="footer-title">Receba as Novidades e Lançamentos</p>
+				<p class="footer-title">Receba as Novidades e Lanï¿½amentos</p>
 				<div id="form-newsletter">
 					<form action="https://docs.google.com/spreadsheet/formResponse?formkey=dFhxZ2tDalFiclU4T2FLZVY4UXVUc2c6MQ&embedded=true&ifq"
 						method="POST" id="ss-form" class="form-newsletter">
@@ -218,7 +218,7 @@
 					
 					<ul>
 						<li class="ie8">
-							<a href="https://docs.google.com/spreadsheet/viewform?formkey=dFhxZ2tDalFiclU4T2FLZVY4UXVUc2c6MQ&ifq" rel="nofollow">Receba as Novidades e Lançamentos</a>
+							<a href="https://docs.google.com/spreadsheet/viewform?formkey=dFhxZ2tDalFiclU4T2FLZVY4UXVUc2c6MQ&ifq" rel="nofollow">Receba as Novidades e Lanï¿½amentos</a>
 						</li>
 					</ul>
 				</div>
