@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,18 @@
 <body>
 
 ${sucesso}
+
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="user"/>
+    <div>
+        Olá ${user.name}
+    </div>
+</sec:authorize>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+    <c:url value="/products/form" var="formLink" />
+    <a href="${formLink}">Cadastrar novo produto</a>
+</sec:authorize>
 
 <table>
     <tr>
