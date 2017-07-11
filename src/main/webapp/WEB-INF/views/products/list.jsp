@@ -2,6 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/security/tags"
           prefix="sec" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="cdc"%>
 <cdc:page title="Listagem de Produtos">
 
@@ -10,7 +11,7 @@ ${sucesso}
 <sec:authorize access="isAuthenticated()">
     <sec:authentication property="principal" var="user"/>
     <div>
-        Olá ${user.name}
+        <spring:message code="users.welcome" arguments="${user.name}"/>
     </div>
 </sec:authorize>
 
