@@ -1,6 +1,7 @@
 package br.com.caelum.fj27.loja.conf;
 
 import com.sun.org.apache.xerces.internal.parsers.SecurityConfiguration;
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -39,6 +40,6 @@ public class ServletInitializer extends AbstractAnnotationConfigDispatcherServle
 
     @Override
     protected Filter[] getServletFilters() {
-        return new Filter[]{new CharacterEncodingFilter("UTF-8")};
+        return new Filter[]{new CharacterEncodingFilter("UTF-8"), new OpenEntityManagerInViewFilter()};
     }
 }

@@ -1,10 +1,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-<h3>Efetue Login</h3>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/security/tags"
+          prefix="sec" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="cdc"%>
+<cdc:page title="Listagem de Produtos">
 <form:form servletRelativeAction="/login">
     <table>
         <tr>
@@ -23,5 +23,4 @@
         </td>
     </table>
 </form:form>
-</body>
-</html>
+</cdc:page>

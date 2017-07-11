@@ -1,24 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Carrinho de Compras</title>
-	
-	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/cssbase-min.css?1463716112737630901" rel="stylesheet" type="text/css"  media="all"  />
-	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet'>
-	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/fonts.css?1463716112737630901" rel="stylesheet" type="text/css"  media="all"  />
-	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/fontello-ie7.css?1463716112737630901" rel="stylesheet" type="text/css"  media="all"  />
-	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/fontello-embedded.css?1463716112737630901" rel="stylesheet" type="text/css"  media="all"  />
-	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/fontello.css?1463716112737630901" rel="stylesheet" type="text/css"  media="all"  />
-    <link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/book-collection.css?1463716112737630901" rel="stylesheet" type="text/css"  media="all"  />
-    <link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/style.css?1463716112737630901" rel="stylesheet" type="text/css"  media="all"  />
-  	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/layout-colors.css?1463716112737630901" rel="stylesheet" type="text/css"  media="all"  />
-  	<link href="http://cdn.shopify.com/s/files/1/0155/7645/t/177/assets/responsivo-style.css?1463716112737630901" rel="stylesheet" type="text/css"  media="all"  />
-</head>
-
-<body class="cart">
+<%@taglib uri="http://www.springframework.org/security/tags"
+		  prefix="sec" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="cdc"%>
+<cdc:page title="Listagem de Produtos">
 	<header id="layout-header">
 		<div class="clearfix container">
 			<a href="/" id="logo"></a>
@@ -29,7 +14,7 @@
 							<a href="${shoppingCartUrl}" rel="nofollow">Seu carrinho (${shoppingCart.quantity})</a>
 						</li>
 						<li>
-							<a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre nós</a>
+							<a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre nï¿½s</a>
 						</li>
 						<li>
 							<a href="/pages/perguntas-frequentes" rel="nofollow">Perguntas Frequentes</a>
@@ -80,7 +65,7 @@
 			<thead>
 				<tr>
 					<th width="70%">Item</th>
-					<th width="10%">Preço</th>
+					<th width="10%">Preï¿½o</th>
 					<th width="10%">Quantidade</th>
 					<th width="10%">Total</th>
 				</tr>
@@ -109,5 +94,4 @@
 			</tfoot>
 		</table>
 	</section>
-</body>
-</html>
+</cdc:page>

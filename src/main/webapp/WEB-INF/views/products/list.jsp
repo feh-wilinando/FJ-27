@@ -1,15 +1,9 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Cadastro de livros</title>
-</head>
-<body>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/security/tags"
+          prefix="sec" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="cdc"%>
+<cdc:page title="Listagem de Produtos">
 
 ${sucesso}
 
@@ -48,5 +42,4 @@ ${sucesso}
         </c:forEach>
     </tbody>
 </table>
-</body>
-</html>
+</cdc:page>
